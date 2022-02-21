@@ -1,0 +1,84 @@
+{%extends 'base.html' %}
+
+
+{%block title%}
+<title>List of wrestlers</title>
+
+{%endblock%}
+
+{%block content%}
+
+
+
+<style>
+
+
+
+    h1{
+    color:#FFDD00;
+    }
+    img{
+    width:175px;
+    height:175px;
+    margin:17px;
+    }
+    .image{
+
+    display:block;
+    transition: 0.3s;
+    }
+    .image:hover{
+    transition: 1s;
+    transform: scale(1.2);
+
+}
+    display:block;
+    }
+    .ppv{
+    color:#FFDD00;
+    font-size:25px;
+    margin-left:270px;
+    }
+    .title{
+
+    font-size:25px;
+    }
+    .ref{
+    display:inline-block;
+    text-align:center;
+    margin:15px;
+    font-size:25px;
+    border: solid 2px #FFDD00;
+    background-color:#000000;
+    }
+
+    .up{
+    position:fixed;
+    top:90%;
+    left:95%;
+    width:50px;
+    height:50px;
+    }
+</style>
+<br>
+<h1 align="center" >WWE WRESTLERS</h1>
+
+
+{%if all_wrestlers_list%}
+{%for wrestler in all_wrestlers_list%}
+
+<a href="{% url 'detail' wrestler.id %}" class="ref" name="w">{{wrestler.name}}
+
+<img src="{{wrestler.main_page}}" class="image">
+</a>
+
+{%endfor%}
+{%else%}
+<h1>No wrestlers</h1>
+
+{% endif %}
+<a href="{% url 'index'%}#w"><img src="https://images.clipartlogo.com/files/images/17/176931/aiga-up-arrow-bg_f" class="up"></a>
+{%endblock%}
+
+
+

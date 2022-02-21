@@ -1,0 +1,116 @@
+{%extends 'base.html' %}
+
+{%block title%}
+<title>Legendary Wrestling History</title>
+{%endblock%}
+
+{%block content%}
+<div class="image">
+<a href="{%url 'main_page_index'%}"><img  height="650" width="60%" src="https://i.pinimg.com/originals/ad/85/0a/ad850a8ab7517b22bca20eec05f5803d.jpg"></a>
+</div>
+    <div class="wrestlers" >
+    <a href="{%url 'index'%}"><h1 align="center" class="name">WWE SUPERSTARS</h1></a>
+    {%for wrestler in some_wrestlers_list%}
+    <strong>
+    <a href="{% url 'detail' wrestler.id %}"><img width=213" height="213"  class="img" src=" {{wrestler.finisher}}"></a>
+    </strong>
+    {%endfor%}
+</div>
+<style>
+
+
+
+
+
+
+
+.image{
+margin-left:20%;
+width:100%;
+z-index: 1;
+
+position:relative;
+top:260px;
+;
+}
+
+
+.name
+{
+
+text-decoration:none;
+margin:0px;
+
+background: -moz-linear-gradient(top,  rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(76,76,76,1) 0%,rgba(89,89,89,1) 12%,rgba(102,102,102,1) 25%,rgba(71,71,71,1) 39%,rgba(44,44,44,1) 50%,rgba(0,0,0,1) 51%,rgba(17,17,17,1) 60%,rgba(43,43,43,1) 76%,rgba(28,28,28,1) 91%,rgba(19,19,19,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313',GradientType=0 );
+
+border:3px solid #FFDD00;
+}
+
+
+.ppvs{
+margin-left:80%;
+margin-top:200px;
+
+z-index: 1;
+top:107px;
+position:absolute;
+}
+.wrestlers{
+z-index: 1;
+position:absolute;
+top:6%;
+
+}
+
+.tag{
+z-index: 1;
+position:absolute;
+top:945px;
+
+}
+
+
+.titles{
+z-index: 1;
+position:absolute;
+top:307px;
+
+}
+
+img:hover{
+
+border:solid 5px #FFDD00;
+}
+
+
+
+</style>
+<div class="tag">
+    <a href="{%url 'tag_index'%}#stables"><h1 align="center" class="name">WWE STABLES</h1></a>
+{%for tag_team in some_tag_teams_list%}
+
+    <a  href="{% url 'tag_detail' tag_team.id%}"><img width="300" height="200" class="img" src="{{tag_team.gif1}}"></a>
+{%endfor%}
+</div>
+
+<div class="titles">
+    <a href="{%url 'title_index'%}"><h1 align="center" class="name">WWE TITLES</h1></a>
+{%for title in some_titles_list%}
+
+    <h1><a  href="{% url 'title_detail' title.id%}"><img width="300" height="110" class="img" src="{{title.gif}}"></a></h1>
+{%endfor%}
+</div>
+
+<div class="ppvs">
+<a href="{%url 'ppv_index'%}"><h1 align="center" class="name">WWE PAY PER VIEWS</h1></a>
+{%for ppv in some_ppvs_list%}
+<strong>
+    <h1><a  href="{% url 'ppv_detail' ppv.id%}"><img width="300" height="128" class="img" src="{{ppv.gif}}"></a></h1>
+</strong>
+{%endfor%}
+</div>
+
+{%endblock%}

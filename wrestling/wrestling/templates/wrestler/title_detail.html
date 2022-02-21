@@ -1,0 +1,141 @@
+{%extends 'base.html' %}
+
+
+{%block title%}
+<title>{{title.name}}</title>
+{%endblock%}
+
+{%block content%}
+
+
+<style>
+
+
+    table{
+    border:solid #FFDD00 5px;
+    color:#FFDD00;
+    background-color:#000000;
+    }
+    th{
+    border:solid #FFDD00 5px;
+
+    }
+
+
+    td{
+    border-left:solid #FFDD00 5px;
+
+    }
+    h1{
+    color:#FFDD00;
+    margin:10px;
+    padding:10px;
+    }
+    a{
+    color:#FFDD00;
+    }
+        .center {
+        display: block;
+        margin-left: 40%;
+
+
+        }
+       .text-center{
+       text-align:center;
+       }
+
+    h5{
+    color:#FFDD00;
+
+    }
+
+
+
+
+    </style>
+
+
+<h1 align="center">{{title.name}}</h1>
+<img src="{{title.image}}" class="center" width="350" height="145">
+<h5>{{title.info}}</h5>
+<table border="5" width="100%" height="600" cellspacing="0" align="center">
+         {%if title.name == 'WWE CHAMPIONSHIP' or title.name == 'WORLD HEAVYWEIGHT CHAMPIONSHIP' or title.name == 'TAG TEAM CHAMPIONSHIP' or title.name == 'INTERCONTINENTAL CHAMPIONSHIP' or title.name == 'UNITED STATES CHAMPIONSHIP' or title.name == 'HARDCORE CHAMPIONSHIP' or title.name == 'EUROPEAN CHAMPIONSHIP'%}
+    <th class="text-center" bgcolor="#000000" >Rank </th>
+    {%endif%}
+    <th  class="text-center" bgcolor="#000000"><a href="{%url 'title_detail_name' title.id%}"><img width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Double_arrow_brown_up.png"></a> Wrestler <a href="{%url 'title_detail_name_down' title.id%}"><img width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/1/16/Double_arrow_yellow_down.png"></a></th>
+             {%if title.name == 'WWE CHAMPIONSHIP' or title.name == 'WORLD HEAVYWEIGHT CHAMPIONSHIP' or title.name == 'TAG TEAM CHAMPIONSHIP' or title.name == 'INTERCONTINENTAL CHAMPIONSHIP' or title.name == 'UNITED STATES CHAMPIONSHIP' or title.name == 'HARDCORE CHAMPIONSHIP' or title.name == 'EUROPEAN CHAMPIONSHIP'%}
+    <th bgcolor="#000000" align="center" class="text-center"><a href="{%url 'title_detail_titles' title.id%}"><img width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Double_arrow_brown_up.png"></a>Title Wins <a href="{%url 'title_detail_titles_down' title.id%}"><img width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/1/16/Double_arrow_yellow_down.png"></a></th>
+{%endif%}
+     {%if title.name == 'WWE CHAMPIONSHIP' or title.name == 'WORLD HEAVYWEIGHT CHAMPIONSHIP' or title.name == 'TAG TEAM CHAMPIONSHIP' or title.name == 'INTERCONTINENTAL CHAMPIONSHIP' or title.name == 'UNITED STATES CHAMPIONSHIP' or title.name == 'HARDCORE CHAMPIONSHIP' or title.name == 'EUROPEAN CHAMPIONSHIP'%}
+    <th bgcolor="000000" class="text-center"><a href="{%url 'title_detail' title.id%}"><img width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Double_arrow_brown_up.png"></a> Days <a href="{%url 'title_detail_days_down' title.id%}"><img width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/1/16/Double_arrow_yellow_down.png"></a></th>
+    {%endif%}
+    {%if title.name == "Money in the bank"%}
+    <th class="text-center" bgcolor="#000000">Year</th>
+    <th bgcolor="000000" class="text-center">Cash in</th>
+{%endif%}
+    {%if title.name == "Royal Rumble"%}
+    <th class="text-center" bgcolor="#000000">Year</th>
+    <th bgcolor="000000" class="text-center">Wrestlemania opponent </th>
+    {%endif%}Z
+    {%if title.name == "King of the ring"%}
+    <th class="text-center" bgcolor="#000000">Year</th>
+    {%endif%}
+
+{%for w in all_wrestlers_list%}
+
+<tr ></tr>
+
+
+         {%if title.name == 'WWE CHAMPIONSHIP' or title.name == 'WORLD HEAVYWEIGHT CHAMPIONSHIP' or title.name == 'TAG TEAM CHAMPIONSHIP' or title.name == 'INTERCONTINENTAL CHAMPIONSHIP' or title.name == 'UNITED STATES CHAMPIONSHIP' or title.name == 'HARDCORE CHAMPIONSHIP' or title.name == 'EUROPEAN CHAMPIONSHIP'%}
+    <td align="center" bgcolor="#000000"><strong>{{  forloop.counter }}</strong></td>
+
+
+
+{%endif%}
+              {%if title.name == 'WWE CHAMPIONSHIP' or title.name == 'WORLD HEAVYWEIGHT CHAMPIONSHIP' or title.name == 'TAG TEAM CHAMPIONSHIP' or title.name == 'INTERCONTINENTAL CHAMPIONSHIP' or title.name == 'UNITED STATES CHAMPIONSHIP' or title.name == 'HARDCORE CHAMPIONSHIP' or title.name == 'EUROPEAN CHAMPIONSHIP' or title.name == 'Money in the bank' and w.mitb or title.name == 'King of the ring' and w.kotr or title.name == 'Royal Rumble' and w.rr%}
+    <td align="center" bgcolor="#000000"><strong><a href="{% url 'detail' w.id %}">{{w.name}}</a></strong></td>
+    {%endif%}
+    {%if title.name == 'WWE CHAMPIONSHIP'%}
+    <td bgcolor="#000000" align="center"><strong>{{w.wwe_title_wins}}</strong></td>
+    <td bgcolor="#000000" align="center"><strong>{{w.wwe_title_days}}</strong></td>
+        {%elif title.name == 'WORLD HEAVYWEIGHT CHAMPIONSHIP'%}
+    <td bgcolor="#000000" align="center"><strong>{{w.wh_title_wins}}</strong></td>
+    <td bgcolor="#000000" align="center"><strong>{{w.wh_title_days}}</strong></td>
+            {%elif title.name == 'TAG TEAM CHAMPIONSHIP'%}
+    <td bgcolor="#000000" align="center"><strong>{{w.tag_title_wins}}</strong></td>
+    <td bgcolor="#000000" align="center"><strong>{{w.tag_title_days}}</strong></td>
+            {%elif title.name == 'INTERCONTINENTAL CHAMPIONSHIP'%}
+    <td bgcolor="#000000" align="center"><strong>{{w.ic_title_wins}}</strong></td>
+    <td bgcolor="#000000" align="center"><strong>{{w.ic_title_days}}</strong></td>
+            {%elif title.name == 'UNITED STATES CHAMPIONSHIP'%}
+    <td bgcolor="#000000" align="center"><strong>{{w.us_title_wins}}</strong></td>
+    <td bgcolor="#000000" align="center"><strong>{{w.us_title_days}}</strong></td>
+            {%elif title.name == "Money in the bank"%}
+            {%if w.mitb %}
+            <td bgcolor="#000000" align="center" ><strong>{{w.mitb}}</strong></td>
+            <td bgcolor="#000000" align="center" width="550"><strong>{{w.cash_in}}
+                {%endif%}
+        {%elif title.name == "King of the ring"%}
+    {%if w.kotr %}
+            <td bgcolor="#000000" align="center"><strong>{{w.kotr}}</strong></td>
+{%endif%}
+            {%elif title.name == "Royal Rumble"%}
+    {%if w.rr %}
+             <td bgcolor="#000000" align="center"><strong>{{w.rr}}</strong></td>
+            <td bgcolor="#000000" align="center" width="600"><strong>{{w.rr_wm}}</strong></td>
+    {%endif%}
+            {%elif title.name == 'EUROPEAN CHAMPIONSHIP'%}
+    <td bgcolor="#000000" align="center"><strong>{{w.eu_title_wins}}</strong></td>
+    <td bgcolor="#000000" align="center"><strong>{{w.eu_title_days}}</strong></td>
+            {%elif title.name == 'HARDCORE CHAMPIONSHIP'%}
+    <td bgcolor="#000000" align="center"><strong>{{w.hc_title_wins}}</strong></td>
+    <td bgcolor="#000000" align="center"><strong>{{w.hc_title_days}}</strong></td>
+
+    {%endif%}
+
+{%endfor%}
+
+    </table>
+
+
+{%endblock%}

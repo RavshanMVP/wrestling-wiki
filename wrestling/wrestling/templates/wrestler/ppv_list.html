@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{%block title%}
+<title>List of pay per views</title>
+
+{%endblock%}
+
+
+{%block content%}
+
+<style>
+
+
+
+    h1{
+    color:#FFDD00;
+    }
+
+
+    .ref{
+    display:inline-block;
+    }
+    img{
+    display:block;
+    margin:10px;
+
+    }
+</style>
+
+<h1 align="center">List of WWE Pay Per Views </h1>
+{%if all_ppvs_list%}
+{%for ppv in all_ppvs_list%}
+
+<a href="{% url 'ppv_detail' ppv.id%}" class="ref" >
+<img width="350" height="200" src="{{ppv.image}}">
+</a>
+{%endfor%}
+
+{%else%}
+PPVS not found
+
+{%endif%}
+
+{%endblock%}

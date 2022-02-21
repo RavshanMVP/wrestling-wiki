@@ -1,0 +1,60 @@
+{%extends 'base.html' %}
+
+
+{%block title%}
+<title>List of tag teams</title>
+
+{%endblock%}
+
+{%block content%}
+
+
+<style>
+
+
+    .image{
+    transition: 1.5s;
+    display:block;
+    }
+        .image:hover{
+    transition: 1.5s;
+
+    width:320px;
+    height:320px;
+}
+        .ref{
+    display:inline-block;
+    text-align:center;
+    margin:25px;
+    font-size:25px;
+    border: solid 5px #FFDD00;
+    background-color:#000000;
+    }
+
+</style>
+
+
+<h1 align="center">TAG TEAMS</h1>
+{% for tag_team in all_tag_teams_list%}
+{% if tag_team.stable == False%}
+<a href="{% url 'tag_detail' tag_team.id %}" class="ref">{{tag_team.name}}
+
+<img src="{{tag_team.main_page}}" class="image" width="300" height="300">
+</a>
+
+{% endif%}
+{%endfor%}
+<h1 align="center"  >STABLES</h1>
+{% for tag_team in all_tag_teams_list%}
+{% if tag_team.stable%}
+<a href="{% url 'tag_detail' tag_team.id %} " name="stables" class="ref">{{tag_team.name}}
+
+<img src="{{tag_team.main_page}}" class="image" width="300" height="300">
+</a>
+
+{% endif%}
+{%endfor%}
+{%endblock%}
+
+
+

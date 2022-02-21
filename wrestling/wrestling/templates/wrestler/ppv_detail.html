@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%block title%}
+<title>{{PPV.main_name}}</title>
+{%endblock%}
+
+{%block content%}
+
+<style>
+
+    h3{
+    color:#FFDD00;
+    }
+
+    .ref{
+    display:inline-block;
+    text-align:center;
+    }
+    img{
+    display:block;
+    margin:10px;
+</style>
+
+
+<h1 align="center">{{PPV.main_name}} </h1>
+
+{%for t in all_titles_list%}
+
+ <a href="http://127.0.0.1:8000/ppv/{{PPV.id}}/{{t.id}}" class="ref">{{t.title}}
+ <img src="{{t.image}}" width = "300" height="125">
+ </a>
+
+
+{%endfor%}
+
+{%endblock%}

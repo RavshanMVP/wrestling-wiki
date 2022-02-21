@@ -1,0 +1,87 @@
+{%extends 'base.html' %}
+
+
+{%block title%}
+<title>{{tt.name}}</title>
+
+{%endblock%}
+
+{%block content%}
+
+
+
+<style>
+
+    .gif{
+    width:500px;
+    height:300px;
+
+    }
+        h1{
+        color:#FFDD00;
+        margin:20px;
+
+    }
+    h5{
+    color:#FFDD00;
+    }
+
+
+        .str{
+    font-size:40px;
+    color:#FFDD00;
+    background-color:rgba(0,0,0,0.2)
+    }
+        body{
+
+    background: url({{tt.photo}});
+    background-size:130%;
+    }
+      .info{
+    background-color:rgba(0,0,0,0.2);
+
+
+    }
+    .members{
+     background-color:rgba(0,0,0,0.2);
+    }
+    .center{
+    margin-left:30%;
+    }
+
+</style>
+
+
+<img class="gif" src="{{tt.gif1}}">
+<img class="gif" src="{{tt.gif2}}">
+<img class="gif" src="{{tt.gif3}}">
+<h1 align="center">{{tt.name}}</h1>
+
+<h5 class="info" >{{tt.info}}</h5>
+<br>
+
+<h1>Members</h1>
+<h5 class="members str"><strong >{{tt.members}}</strong></h5>
+<br>
+<h1 align="center">Championships</h1>
+<img width="500" height="150" class="center" src="https://vignette.wikia.nocookie.net/prowrestling/images/3/32/WWE_World_Tag_Team_Championship.png/revision/latest?cb=20170523123101">
+<strong class="str ">{{tt.tag_title_wins}}</strong>
+<br>
+<br>
+<img width="300" height="100" src="https://vignette.wikia.nocookie.net/prowrestling/images/3/30/New_WWE_World_Heavyweight_Title.png/revision/latest?cb=20180123080727">
+<strong class="str">{{tt.wwe_title_wins}}</strong>
+<img width="300" height="100" src="https://vignette.wikia.nocookie.net/wwe2kstorys/images/3/30/Whctitle.png/revision/latest?cb=20140316172247">
+<strong class="str">{{tt.wh_title_wins}}</strong>
+
+<img width="300" height="100" src=https://vignette.wikia.nocookie.net/wwebrady/images/9/9d/WWE_Intercontinental_Championship_2014.png/revision/latest?cb=20181230052207">
+<strong class="str">{{tt.ic_title_wins}}</strong>
+<img width="290" height="100" src="https://i.pinimg.com/originals/bc/14/e3/bc14e3e991c62ab574ce48fc1184d7eb.png">
+<strong class="str">{{tt.us_title_wins}}</strong>
+
+<img width="300" height="100" src="https://upload.wikimedia.org/wikipedia/ru/d/d3/WWE_European_Championship_belt.png">
+<strong class="str">{{tt.eu_title_wins}}</strong>
+<img width="290" height="100" src="https://vignette.wikia.nocookie.net/shadiestcard4-my-wwe-universe-mode/images/4/45/Wwe-hardcore-championship.png/revision/latest?cb=20180512144526">
+<strong class="str">{{tt.hc_title_wins}}</strong>
+{%endblock%}
+
+

@@ -1,0 +1,174 @@
+{%extends 'base.html' %}
+
+
+{%block title%}
+<title>{{wrestler.name}}</title>
+
+{%endblock%}
+
+{%block content%}
+
+<style>
+
+    body{
+
+    background: url({{wrestler.photo}});
+    background-size:130%;
+    }
+
+    h1{
+        color:#FFDD00;
+        margin:20px;
+
+    }
+    h5{
+    color:#FFDD00;
+    }
+
+
+
+    .strong{
+    color:#FFDD00;
+    }
+
+    .strong:hover{
+    color:#000000;
+    }
+
+    .str{
+    font-size:40px;
+    color:#FFDD00;
+    }
+
+    img:hover{
+
+        width:300px;
+        height:100px;
+        transition:1s;
+
+    }
+    img{
+    transition:1s;
+    }
+    .image{
+
+    display:block;
+    }
+
+    .special:hover{
+    border #000000 solid 1 px;
+    width:175px;
+    height:175px;
+    }
+    .special_1:hover{
+    border #000000 solid 1 px;
+    width:225px;
+    height:175px;
+
+    }
+    .gif{
+    width:500px;
+    height:300px;
+
+    }
+        .gif:hover{
+    width:500px;
+    height:300px;
+
+    }
+
+    .info{
+    background-color:rgba(0,0,0,0.2);
+
+    }
+</style>
+
+
+<img class="gif" src=" {{wrestler.finisher}}" align="center">
+<img class="gif" src=" {{wrestler.finisher2}}" align="center">
+<img class="gif" src=" {{wrestler.finisher3}}" align="center">
+<br>
+<h1 align="center">{{wrestler.name}}</h1>
+<h5 class="info">{{wrestler.info}}</h5>
+<br>
+
+{% if wrestler.tag_teams %}
+<h1>Tag teams and stables</h1>
+{%endif%}
+{% for tag_team in all_tag_teams_list%}
+{% if tag_team.name == wrestler.tag_teams%}
+<h3><strong class="str"><a href="http://127.0.0.1:8000/tag_teams/{{tag_team.id}}">{{wrestler.tag_teams}}</a></strong></h3>
+{%endif%}
+
+
+{%endfor%}
+{% for tag_team in all_tag_teams_list%}
+{% if tag_team.name == wrestler.tag_teams2%}
+<h3><strong class="str"><a href="http://127.0.0.1:8000/tag_teams/{{tag_team.id}}">{{wrestler.tag_teams2}}</a></strong></h3>
+
+{%endif%}
+{%endfor%}
+
+{% for tag_team in all_tag_teams_list%}
+{% if tag_team.name == wrestler.tag_teams3%}
+<h3><strong class="str"><a href="http://127.0.0.1:8000/tag_teams/{{tag_team.id}}">{{wrestler.tag_teams3}}</a></strong></h3>
+{%endif%}
+{%endfor%}
+
+{% for tag_team in all_tag_teams_list%}
+{% if tag_team.name == wrestler.tag_teams4%}
+<h3><strong class="str"><a href="http://127.0.0.1:8000/tag_teams/{{tag_team.id}}">{{wrestler.tag_teams4}}</a></strong></h3>
+{%endif%}
+{%endfor%}
+
+{% for tag_team in all_tag_teams_list%}
+{% if tag_team.name == wrestler.tag_teams5%}
+<h3><strong class="str"><a href="http://127.0.0.1:8000/tag_teams/{{tag_team.id}}">{{wrestler.tag_teams5}}</a></strong></h3>
+{%endif%}
+{%endfor%}
+
+{% for tag_team in all_tag_teams_list%}
+{% if tag_team.name == wrestler.tag_teams6%}
+<h3><strong class="str"> <a href="http://127.0.0.1:8000/tag_teams/{{tag_team.id}}">{{wrestler.tag_teams6}}</a></strong></h3>
+{%endif%}
+{%endfor%}
+
+
+<h1>Championships</h1>
+
+<a href="http://127.0.0.1:8000/title/{{wwe.id}} "><img src="{{wwe.image}}" width="250" height="100"></a>
+<strong class="str">{{wrestler.wwe_title_wins}}</strong>
+<a href="http://127.0.0.1:8000/title/{{wh.id}} "><img src="{{wh.image}}" width="250" height="100"></a>
+<strong class="str">{{wrestler.wh_title_wins}}</strong>
+<a href="http://127.0.0.1:8000/title/{{tag.id}}"><img src="{{tag.image}}" width="250" height="100"></a>
+<strong class="str">{{wrestler.tag_title_wins}}</strong>
+<a href="http://127.0.0.1:8000/title/{{ic.id}} "><img src="{{ic.image}}" width="250" height="100"></a>
+<strong class="str">{{wrestler.ic_title_wins}}</strong>
+<a href="http://127.0.0.1:8000/title/{{us.id}} "><img src="{{us.image}}" width="250" height="100"></a>
+<strong class="str">{{wrestler.us_title_wins}}</strong>
+<a href="http://127.0.0.1:8000/title/{{eu.id}} "><img src="{{eu.image}}" width="250" height="100"></a>
+<strong class="str">{{wrestler.eu_title_wins}}</strong>
+<a href="http://127.0.0.1:8000/title/{{hc.id}} "><img src="{{hc.image}}" width="250" height="100"></a>
+<strong class="str">{{wrestler.hc_title_wins}}</strong>
+{%if wrestler.rr or wrestler.kotr or wrestler.mitb%}
+<h1>Other accomplishments</h1>
+{% if wrestler.rr%}
+
+<a href="http://127.0.0.1:8000/title/{{rr.id}} "><img src="{{rr.image}}" width="250" height="100"></a>
+{%endif%}
+<strong class="str">{{wrestler.rr}}</strong>
+
+{%if wrestler.mitb%}
+<a href="http://127.0.0.1:8000/title/{{mitb.id}} "><img src="{{mitb.image}}" width="250" height="100"></a>
+<strong class="str">{{wrestler.mitb}}</strong>
+{%endif%}
+
+{% if wrestler.kotr%}
+<a href="http://127.0.0.1:8000/title/{{kotr.id}} "><img src="{{kotr.image}}" width="250" height="100"></a>
+<strong class="str">{{wrestler.kotr}}</strong>
+{%endif%}
+{%endif%}
+
+
+
+{%endblock%}
